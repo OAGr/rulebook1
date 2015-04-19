@@ -5,3 +5,5 @@ rules:
     warning: superman
   - regex: fmt
     warning: superman
+  - regex: foobar
+    warning: foobar1
