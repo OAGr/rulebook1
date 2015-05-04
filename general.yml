@@ -1,7 +1,11 @@
 rules:
-  - regex: '^.{5,}$'
+  - regex: '^.{100,}$'
     warning: 'No lines over 100 char length'
     match:
       - '01234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789'
     nomatch:
       - 'foo'
+  - regex: debugger
+    warning: 'Remove debuggers'
+  - regex: byebug
+    warning: 'Remove debuggers'
