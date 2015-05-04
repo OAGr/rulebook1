@@ -1,9 +1,0 @@
-rules:
-  - regex: batman
-    warning: superman
-  - regex: Println
-    warning: superman
-  - regex: fmt
-    warning: superman
-  - regex: foobar
-    warning: foobar1

@@ -1,0 +1,59 @@
+rules:
+  - regex: '"[^#]*"'
+    warning: Use single quotes when not using interpolation
+    match:
+      - '"this is a test"'
+    nomatch:
+      - '"#{this}"'
+      #- '"#{foo}" "#{bar}"'  //TODO: Make this work
+  - regex: class\s.*end
+    warning: Use Class.new instead, like ```FooError = Class.new(StandardError)```
+    link: https://github.com/ConsultingMD/ConsultingMD/wiki/Ruby-Style-Guide#single-line-classes
+    match:
+      - class FooError < StandardError; end
+      - class FooError; end
+  - regex: .*;.*;
+    warning: Avoid single-line methods.
+    link: https://github.com/ConsultingMD/ConsultingMD/wiki/Ruby-Style-Guide#no-single-line-methods
+    match:
+      - def too_much; something; something_else; end
+      - def too_much; something; foobar
+  - regex: '\!\s[a-zA-Z]'
+    warning: 'No space after !'
+    link: https://github.com/ConsultingMD/ConsultingMD/wiki/Ruby-Style-Guide#no-space-bang
+    match:
+      - '! something'
+    nomatch:
+      - '!something'
+  - regex: \d\s\.{2,3}\s\d
+    warning: No space inside range literals.
+    link: https://github.com/ConsultingMD/ConsultingMD/wiki/Ruby-Style-Guide#no-space-inside-range-literals
+    match:
+      - 1 .. 3
+      - 1 ... 3
+    nomatch:
+      - 1..3
+      - 1...3
+  - regex: '#begin'
+    warning: Don't use block comments.
+    link: https://github.com/ConsultingMD/ConsultingMD/wiki/Ruby-Style-Guide#no-block-comment
+  - regex: 'for\s[\w]{1,}\sin\s[\w]{1,}\sdo'
+    warning: Don't use for in ruby
+    link: https://github.com/ConsultingMD/ConsultingMD/wiki/Ruby-Style-Guide#no-for-loops
+    match:
+      - 'for elem in arr do'
+  - regex: 'not\s[\w]{1,}'
+    warning: 'use ! instead of not'
+    link: https://github.com/ConsultingMD/ConsultingMD/wiki/Ruby-Style-Guide#no-when-semicolons
+    match:
+      - 'not foobar'
+  - regex: end if
+    warning: "The and and or keywords are banned. It's just not worth it. Always use && and || instead."
+    link: https://github.com/ConsultingMD/ConsultingMD/wiki/Ruby-Style-Guide#no-and-or-or
+    match:
+      - 'end if foobar'
+  - regex: 'if not'
+    warning: "Favor unless over if for negative conditions (or control flow ||)."
+    link: https://github.com/ConsultingMD/ConsultingMD/wiki/Ruby-Style-Guide#unless-for-negatives
+    match:
+      - 'foo if not bar'
